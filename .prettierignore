@@ -1,0 +1,16 @@
+bin
+node_modules 
+template
+client/public
+client/node_modules
+client/.gitignore
+client/package-lock.json
+client/package.json
+
+.gitignore
+schema_design.md 
+user_permissions.md 
+README.md
+overview.md
+package-lock.json
+package.json
