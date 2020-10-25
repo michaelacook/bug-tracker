@@ -1,7 +1,7 @@
 import React from "react"
 import AlertBell from "./AlertBell"
 
-export default () => {
+export default ({ viewed, notifications, notificationsCount }) => {
   return (
     <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
       <button
@@ -66,39 +66,10 @@ export default () => {
         </li>
 
         <li class="nav-item dropdown no-arrow mx-1">
-          {/* Props added are for testing and demonstration purposes only */}
           <AlertBell
-            notifications={{
-              count: 2,
-              notifications: [
-                {
-                  id: 1,
-                  date: "Tues Oct 20",
-                  sourceUser: {
-                    id: 1,
-                    name: "Jane Doe",
-                    sourceItem: {
-                      id: 1,
-                      type: "project",
-                    },
-                  },
-                  text: "You have been assigned to a new project.",
-                },
-                {
-                  id: 2,
-                  date: "Mon Oct 19",
-                  sourceUser: {
-                    id: 1,
-                    name: "Jane Doe",
-                    sourceItem: {
-                      id: 2,
-                      type: "issue",
-                    },
-                  },
-                  text: "Jane mentioned you in a comment.",
-                },
-              ],
-            }}
+            viewed={viewed}
+            notifications={notifications}
+            notificationsCount={notificationsCount}
           />
         </li>
 

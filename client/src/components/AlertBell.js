@@ -1,32 +1,11 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 
 /**
  * Handle interactive display of notifications alerts
  * When the API is up and running, this component should query the API and not accept props
  * Currently it accepts props for demonstration and testing purposes
  */
-export default (props) => {
-  const [notifications, setNotifications] = useState("")
-  const [notificationsCount, setNotificationsCount] = useState("")
-
-  /**
-   * Remove clicked notification, decrement notification count
-   * @param {Number} id - notification id
-   */
-  function viewed(id) {
-    const newNotifications = Object.assign(notifications)
-    newNotifications.notifications = newNotifications.notifications.filter(
-      (notif) => notif.id !== id
-    )
-    setNotifications(newNotifications)
-    setNotificationsCount(notificationsCount - 1)
-  }
-
-  useEffect(() => {
-    setNotifications(props.notifications)
-    setNotificationsCount(props.notifications.count)
-  }, [])
-
+export default ({ viewed, notifications, notificationsCount }) => {
   return (
     <div>
       <a
@@ -45,7 +24,6 @@ export default (props) => {
             {notificationsCount}
           </span>
         ) : null}
-        {/* <span className="badge badge-danger badge-counter">11</span> */}
       </a>
 
       <div
