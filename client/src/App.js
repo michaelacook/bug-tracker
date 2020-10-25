@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
-import Sidebar from "./components/Sidebar"
-import Topbar from "./components/Topbar"
-import Footer from "./components/Footer"
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
+import { Provider } from "./components/Provider"
+import Home from "./views/Home"
 
 // notifications object for UI testing
 import testNotifications from "./test_notifications"
@@ -29,18 +29,18 @@ export default function App() {
   }
 
   return (
-    <div id="wrapper">
-      <Sidebar />
-      <div id="content-wrapper" className="d-flex flex-column">
-        <div id="content">
-          <Topbar
-            viewed={viewed}
-            notifications={notifications}
-            notificationsCount={notificationsCount}
-          />
-        </div>
-        <Footer />
-      </div>
-    </div>
+    <Provider
+      value={{
+        notifications,
+        notificationsCount,
+        viewed,
+      }}
+    >
+      <Router>
+        <Switch>
+          <Route path="/" component={Home} />
+        </Switch>
+      </Router>
+    </Provider>
   )
 }
