@@ -5,6 +5,7 @@ import Footer from "../components/Footer"
 import Context from "../components/Provider"
 
 /**
+ * Frame provides the sidebar, topbar, and footer
  * elements prop references a function that renders any passed components
  */
 export default ({ elements }) => {
