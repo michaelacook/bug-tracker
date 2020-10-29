@@ -14,6 +14,9 @@ module.exports = {
       targetUserId: {
         type: Sequelize.NUMBER,
       },
+      issueId: {
+        type: Sequelize.NUMBER,
+      },
       body: {
         type: Sequelize.STRING,
       },
