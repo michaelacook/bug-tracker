@@ -28,5 +28,5 @@
 - ORM: Sequelize.js
 - Server: Express.js
 - Client: React.js
-- Design template: [SB Admin 2](https://startbootstrap.com/themes/sb-admin-2/)
+- Design template: Semantic UI
 - Notifications: Socket.io
