@@ -9,6 +9,9 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(Notification, {
         foreignKey: "targetUserId",
       })
+      User.hasMany(Notification, {
+        foreignKey: "sourceUserId",
+      })
       User.belongsToMany(Project, {
         through: ProjectUser,
         foreignKey: "userId",

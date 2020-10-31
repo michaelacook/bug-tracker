@@ -2,7 +2,14 @@
 const { Model } = require("sequelize")
 module.exports = (sequelize, DataTypes) => {
   class Notification extends Model {
-    static associate({ User }) {}
+    static associate({ User }) {
+      Notification.belongsTo(User, {
+        foreignKey: "targetUserId",
+      })
+      Notification.belongsTo(User, {
+        foreignKey: "sourceUserId",
+      })
+    }
   }
   Notification.init(
     {
