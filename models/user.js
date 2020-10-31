@@ -4,17 +4,17 @@ module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     static associate({ Role, Notification, ProjectUser, Comment }) {
       User.belongsTo(Role, {
-        foreignKey: "roleId"
+        foreignKey: "roleId",
       })
       User.hasMany(Notification, {
-        foreignKey: "targetUserId"
+        foreignKey: "targetUserId",
       })
       User.belongsToMany(Project, {
         through: ProjectUser,
-        foreignKey: "userId"
+        foreignKey: "userId",
       })
       User.hasMany(Comment, {
-        foreignKey: "userId"
+        foreignKey: "userId",
       })
     }
   }

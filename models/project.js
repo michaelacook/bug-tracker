@@ -5,10 +5,10 @@ module.exports = (sequelize, DataTypes) => {
     static associate({ ProjectUser, Issue }) {
       Project.belongsToMany(User, {
         through: ProjectUser,
-        foreignKey: "projectId"
+        foreignKey: "projectId",
       })
       Project.hasMany(Issue, {
-        foreignKey: "projectId"
+        foreignKey: "projectId",
       })
     }
   }

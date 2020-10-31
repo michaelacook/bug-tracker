@@ -4,13 +4,13 @@ module.exports = (sequelize, DataTypes) => {
   class Issue extends Model {
     static associate({ Priority, Project, IssueHistory }) {
       Issue.belongsTo(Priority, {
-        foreignKey: "priorityId"
+        foreignKey: "priorityId",
       })
       Issue.belongsTo(Project, {
-        foreignKey: "projectId"
+        foreignKey: "projectId",
       })
       Issue.hasMany(IssueHistory, {
-        foreignKey: "issueId"
+        foreignKey: "issueId",
       })
     }
   }
