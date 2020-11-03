@@ -1,7 +1,5 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import "./sb-admin-2.css"
-// import "./scripts/sb-admin-2"
 import App from "./App"
 import * as serviceWorker from "./serviceWorker"
 
