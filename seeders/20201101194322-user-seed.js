@@ -11,6 +11,8 @@ module.exports = {
           "$2y$12$F1Noc7NZPfVNvORuuIX0g./TLS36y34adxbpylfxpDeXCkEizROY6",
         email: "rootuser@email.com",
         roleId: 1,
+        createdAt: new Date(),
+        updatedAt: new Date()
       },
       {
         firstName: "Michael",
@@ -20,6 +22,8 @@ module.exports = {
           "$2y$12$ToGwHREhW9cmu83GcKISH.li.3XgI5nrzwMYX.c/NZ1jX40Rqbu2.",
         email: "mcook0775@gmail.com",
         roleId: 2,
+        createdAt: new Date(),
+        updatedAt: new Date()
       },
       {
         firstName: "Demo",
@@ -27,6 +31,8 @@ module.exports = {
         password: "demoprojectmanager",
         email: "demoprojectmanager@email.com",
         roleId: 3,
+        createdAt: new Date(),
+        updatedAt: new Date()
       },
       {
         firstName: "Demo",
@@ -34,6 +40,8 @@ module.exports = {
         password: "demodeveloper",
         email: "demodeveloper@email.com",
         roleId: 4,
+        createdAt: new Date(),
+        updatedAt: new Date()
       },
       {
         firstName: "Demo",
@@ -41,6 +49,8 @@ module.exports = {
         password: "demosubmitter",
         email: "demosubmitter@email.com",
         roleId: 5,
+        createdAt: new Date(),
+        updatedAt: new Date()
       },
     ])
   },

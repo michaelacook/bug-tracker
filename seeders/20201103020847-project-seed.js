@@ -8,6 +8,8 @@ module.exports = {
         description:
           "An issue tracking application for software development teams.",
         projectManager: 3,
+        createdAt: new Date(),
+        updatedAt: new Date()
       },
     ])
   },
