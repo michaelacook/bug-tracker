@@ -17,7 +17,7 @@ app.use((err, req, res, next) => {
   if (process.env.NODE_ENV !== "production") {
     res.status(err.status || 500).json({
       message: err.message,
-      stack: err.stack, 
+      stack: err.stack,
     })
   } else {
     res.status(err.status || 500).json(err.message)
