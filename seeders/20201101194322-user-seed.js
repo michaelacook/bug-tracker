@@ -12,7 +12,7 @@ module.exports = {
         email: "rootuser@email.com",
         roleId: 1,
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       },
       {
         firstName: "Michael",
@@ -23,7 +23,7 @@ module.exports = {
         email: "mcook0775@gmail.com",
         roleId: 2,
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       },
       {
         firstName: "Demo",
@@ -32,7 +32,7 @@ module.exports = {
         email: "demoprojectmanager@email.com",
         roleId: 3,
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       },
       {
         firstName: "Demo",
@@ -41,7 +41,7 @@ module.exports = {
         email: "demodeveloper@email.com",
         roleId: 4,
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       },
       {
         firstName: "Demo",
@@ -50,7 +50,7 @@ module.exports = {
         email: "demosubmitter@email.com",
         roleId: 5,
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       },
     ])
   },

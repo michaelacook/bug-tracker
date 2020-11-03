@@ -9,7 +9,7 @@ module.exports = {
           "An issue tracking application for software development teams.",
         projectManager: 3,
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       },
     ])
   },
