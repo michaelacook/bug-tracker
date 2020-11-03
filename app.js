@@ -3,6 +3,7 @@
 const express = require("express")
 const cors = require("cors")
 const path = require("path")
+const app = express()
 
 // in production serve create-react-app index.html
 if (process.env.NODE_ENV === "production") {
@@ -23,7 +24,5 @@ app.use((err, req, res, next) => {
     res.status(err.status || 500).json(err.message)
   }
 })
-
-const app = express()
 
 module.exports = app
