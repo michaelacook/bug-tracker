@@ -35,7 +35,11 @@ module.exports = {
     try {
       const id = req.params.id
       const projects = req.query.projects
-      const user = await UserService.getOneUser(id, projects ? true : null)
+      const role = req.query.role
+      const user = await UserService.getOneUser(
+        projects ? true : null,
+        role ? true : null
+      )
       return res.status(200).json(user)
     } catch (err) {
       next(err)
