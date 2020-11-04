@@ -36,7 +36,8 @@ module.exports = {
           id: {
             [Op.eq]: id
           }
-        }
+        },
+        include: projects ? Project : null
       })
       return user
     } catch (err) {
