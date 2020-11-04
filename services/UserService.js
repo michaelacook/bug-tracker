@@ -22,4 +22,25 @@ module.exports = {
       return Promise.reject(err)
     }
   },
+
+  /**
+   * Retrieve a single user by id 
+   * @param {Number} id - user PK
+   * @param {Boolean} projects - default false, eager load associated projects on true
+   */
+  getOneUser: async (id, projects = false) => {
+    try {
+      await User.sync()
+      const user = await User.findOne({
+        where: {
+          id: {
+            [Op.eq]: id
+          }
+        }
+      })
+      return user
+    } catch (err) {
+      return Promise.reject(err)
+    }
+  }
 }
