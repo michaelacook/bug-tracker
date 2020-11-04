@@ -1,11 +1,12 @@
-const { User } = require("../models/index")
+const { User, Project } = require("../models/index")
 const { Op } = require("sequelize")
 
 module.exports = {
   /**
    * Retrieve all users except the root user
+   * @param {Boolean} projects - default false, eager load associated projects on true
    */
-  getAllUsers: async () => {
+  getAllUsers: async (projects = false) => {
     try {
       await User.sync()
       const users = await User.findAll({
@@ -14,6 +15,7 @@ module.exports = {
             [Op.gt]: 1,
           },
         },
+        include: projects ? Project : null
       })
       return users
     } catch (err) {

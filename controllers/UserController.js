@@ -3,6 +3,7 @@ const UserService = require("../services/UserService")
 module.exports = {
   /**
    * Handle route /users/all GET
+   * Send associated projects for each user when query param ?projects present
    * @param {Object} req - HTTP request
    * @param {Object} res - HTTP response
    * @param {Func} next - next middleware function call
@@ -10,7 +11,8 @@ module.exports = {
    */
   allUsersGET: async (req, res, next) => {
     try {
-      const users = await UserService.getAllUsers()
+      const projects = req.query.projects
+      const users = await UserService.getAllUsers(projects ? true : null)
       return res.status(200).json(users)
     } catch (err) {
       next(err)
