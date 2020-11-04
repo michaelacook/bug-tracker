@@ -9,7 +9,7 @@ All endpoints beginning with `/users`
 - Options 
   - `?projects=true` to get each user's associated projects
 
-    ```json 
+    ```
     [
         {
             id: INT,
@@ -36,7 +36,7 @@ All endpoints beginning with `/users`
 
     With Projects:
 
-    ```json
+    ```j
     [
         {
             id: INT,
