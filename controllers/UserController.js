@@ -47,4 +47,27 @@ module.exports = {
       next(err)
     }
   },
+
+  /**
+   * Handle route /users/new
+   * New user added to data store, send back 201 Created on success
+   * @param {Object} res
+   * @param {Object} req
+   * @param {Func} next
+   * @return {Object} res.json
+   */
+  userAddPOST: async (req, res, next) => {
+    try {
+      const { firstName, lastName, password, email } = req.body
+      const id = await UserService.addUser({
+        firstName, 
+        lastName,
+        password,
+        email
+      })
+      return res.status(201).json(id)
+    } catch (err) {
+      next(err)
+    }
+  }
 }
