@@ -43,5 +43,26 @@ module.exports = {
     } catch (err) {
       return Promise.reject(err)
     }
-  }
+  },
+
+  /**
+   * Add a user to the data store, default role is submitter
+   * @param {Object} properties firstName:string, lastName:string, password:string, email:string
+   * @return {Object} res.json
+   */
+  addUser: async ({ firstName, lastName, password, email }) => {
+    try {
+      await User.sync()
+      const user = await User.create({
+        firstName,
+        lastName,
+        password,
+        email,
+        roleId: 5
+      })
+      return res.status(201).json(user.id)
+    } catch (err) {
+      return Promise.reject(err)
+    }
+  },
 }
