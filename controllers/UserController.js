@@ -39,6 +39,7 @@ module.exports = {
       const projects = req.query.projects
       const role = req.query.role
       const user = await UserService.getOneUser(
+        id,
         projects ? true : null,
         role ? true : null
       )
@@ -60,14 +61,14 @@ module.exports = {
     try {
       const { firstName, lastName, password, email } = req.body
       const id = await UserService.addUser({
-        firstName, 
+        firstName,
         lastName,
         password,
-        email
+        email,
       })
       return res.status(201).json(id)
     } catch (err) {
       next(err)
     }
-  }
+  },
 }
