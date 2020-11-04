@@ -1,4 +1,4 @@
-const { User, Project } = require("../models/index")
+const { User, Project, Role } = require("../models/index")
 const { Op } = require("sequelize")
 
 module.exports = {
@@ -6,17 +6,21 @@ module.exports = {
    * Retrieve all users except the root user
    * @param {Boolean} projects - default false, eager load associated projects on true
    */
-  getAllUsers: async (projects = false) => {
+  getAllUsers: async (projects = false, role = false) => {
     try {
       await User.sync()
-      const users = await User.findAll({
+      const options = {
         where: {
           id: {
             [Op.gt]: 1,
           },
         },
-        include: projects ? Project : null
-      })
+      }
+      const include = []
+      if (projects) include.push({ model: Project, required: false })
+      if (role) include.push({ model: Role, required: false })
+      if (include.length) options.include = include
+      const users = await User.findAll(options)
       return users
     } catch (err) {
       return Promise.reject(err)
@@ -24,7 +28,7 @@ module.exports = {
   },
 
   /**
-   * Retrieve a single user by id 
+   * Retrieve a single user by id
    * @param {Number} id - user PK
    * @param {Boolean} projects - default false, eager load associated projects on true
    */
@@ -34,10 +38,10 @@ module.exports = {
       const user = await User.findOne({
         where: {
           id: {
-            [Op.eq]: id
-          }
+            [Op.eq]: id,
+          },
         },
-        include: projects ? Project : null
+        include: projects ? Project : null,
       })
       return user
     } catch (err) {
@@ -58,7 +62,7 @@ module.exports = {
         lastName,
         password,
         email,
-        roleId: 5
+        roleId: 5,
       })
       return res.status(201).json(user.id)
     } catch (err) {

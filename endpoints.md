@@ -1,12 +1,14 @@
-# Endpoints 
+# Endpoints
+
 All endpoints return JSON and may accept query parameters that modify their functionality. This document serves as a guide to all endpoints and the structure of the JSON returned by them.
 
-## **/users** 
+## **/users**
+
 All endpoints beginning with `/users`
 
-- **`/users/all`** 
-- Returns a JSON array of all users 
-- Options 
+- **`/users/all`**
+- Returns a JSON array of all users
+- Options
   - `?projects=true` to get each user's associated projects
 
 ```
@@ -66,11 +68,12 @@ With Projects:
     }
 ]
 ```
-- **`/users/:id`** 
+
+- **`/users/:id`**
 - Returns a JSON object for a single user
-- Parameters   
+- Parameters
   - `id` user id (primary key)
-- Options 
+- Options
   - `?projects=true` to get each user's associated projects
 
 ```
@@ -86,7 +89,7 @@ With Projects:
 }
 ```
 
-With Projects: 
+With Projects:
 
 ```
 {

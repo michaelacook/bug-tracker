@@ -22,9 +22,9 @@ module.exports = {
   /**
    * Handle route /users/:id GET
    * Send associated projects for user when query param ?projects present
-   * @param {Object} res 
+   * @param {Object} res
    * @param {Object} req
-   * @param {Func} next 
+   * @param {Func} next
    * @return {Object} res.json
    */
   oneUserGet: async (req, res, next) => {
@@ -36,5 +36,5 @@ module.exports = {
     } catch (err) {
       next(err)
     }
-  }
+  },
 }
