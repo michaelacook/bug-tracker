@@ -1,9 +1,9 @@
 // https://medium.com/free-code-camp/how-to-make-create-react-app-work-with-a-node-backend-api-7c5c48acb1b0
 
 const express = require("express")
-const cors = require("cors")
-const path = require("path")
 const app = express()
+const path = require("path")
+const cors = require("cors")
 
 const userRoutes = require("./routes/userRoutes")
 
@@ -14,6 +14,10 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.join(__dirname, "client/build", "index.html"))
   })
 }
+
+app.use(cors())
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
 
 // routes
 app.get("/", (req, res) =>
