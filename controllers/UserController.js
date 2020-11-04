@@ -4,6 +4,7 @@ module.exports = {
   /**
    * Handle route /users/all GET
    * Send associated projects for each user when query param ?projects present
+   * Send user role when query param ?role present
    * @param {Object} req - HTTP request
    * @param {Object} res - HTTP response
    * @param {Func} next - next middleware function call
@@ -26,6 +27,7 @@ module.exports = {
   /**
    * Handle route /users/:id GET
    * Send associated projects for user when query param ?projects present
+   * Send user role when query param ?role present
    * @param {Object} res
    * @param {Object} req
    * @param {Func} next
