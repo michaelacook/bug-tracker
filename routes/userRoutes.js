@@ -8,4 +8,8 @@ router.get("/all", (req, res, next) =>
   UserController.allUsersGET(req, res, next)
 )
 
+router.get("/:id", (req, res, next) => 
+  UserController.oneUserGet(req, res, next)
+)
+
 module.exports = router
