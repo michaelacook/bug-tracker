@@ -32,17 +32,21 @@ module.exports = {
    * @param {Number} id - user PK
    * @param {Boolean} projects - default false, eager load associated projects on true
    */
-  getOneUser: async (id, projects = false) => {
+  getOneUser: async (id, projects = false, role = false) => {
     try {
       await User.sync()
-      const user = await User.findOne({
+      const options = {
         where: {
           id: {
-            [Op.eq]: id,
+            [Op.gt]: 1,
           },
         },
-        include: projects ? Project : null,
-      })
+      }
+      const include = []
+      if (projects) include.push({ model: Project, required: false })
+      if (role) include.push({ model: Role, required: false })
+      if (include.length) options.include = include
+      const user = await User.findOne(options)
       return user
     } catch (err) {
       return Promise.reject(err)
