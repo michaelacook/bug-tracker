@@ -12,7 +12,11 @@ module.exports = {
   allUsersGET: async (req, res, next) => {
     try {
       const projects = req.query.projects
-      const users = await UserService.getAllUsers(projects ? true : null)
+      const role = req.query.role
+      const users = await UserService.getAllUsers(
+        projects ? true : null,
+        role ? true : null
+      )
       return res.status(200).json(users)
     } catch (err) {
       next(err)
