@@ -33,7 +33,7 @@ module.exports = {
    * @param {Func} next
    * @return {Object} res.json
    */
-  oneUserGet: async (req, res, next) => {
+  oneUserGET: async (req, res, next) => {
     try {
       const id = req.params.id
       const projects = req.query.projects
