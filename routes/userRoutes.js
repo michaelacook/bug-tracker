@@ -16,5 +16,4 @@ router.post("/new", (req, res, next) =>
   UserController.userAddPOST(req, res, next)
 )
 
-
 module.exports = router
