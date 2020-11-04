@@ -42,7 +42,7 @@ module.exports = {
   getOneUser: async (id, projects = false, role = false) => {
     try {
       await User.sync()
-      const options = {}
+      const options = { where: { id: { [Op.eq]: id } } }
       const include = []
       if (projects)
         include.push({
