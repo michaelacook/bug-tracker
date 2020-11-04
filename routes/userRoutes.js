@@ -12,5 +12,9 @@ router.get("/:id", (req, res, next) =>
   UserController.oneUserGET(req, res, next)
 )
 
+router.post("/new", (req, res, next) =>
+  UserController.userAddPOST(req, res, next)
+)
+
 
 module.exports = router
