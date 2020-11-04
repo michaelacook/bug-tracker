@@ -36,7 +36,7 @@ All endpoints beginning with `/users`
 
     With Projects:
 
-    ```j
+    ```
     [
         {
             id: INT,
