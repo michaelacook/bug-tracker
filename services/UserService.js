@@ -56,7 +56,7 @@ module.exports = {
   /**
    * Add a user to the data store, default role is submitter
    * @param {Object} properties firstName:string, lastName:string, password:string, email:string
-   * @return {Object} res.json
+   * @return {Number} newly created user id
    */
   addUser: async ({ firstName, lastName, password, email }) => {
     try {
@@ -68,7 +68,7 @@ module.exports = {
         email,
         roleId: 5,
       })
-      return res.status(201).json(user.id)
+      return user.id
     } catch (err) {
       return Promise.reject(err)
     }
