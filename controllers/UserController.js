@@ -18,4 +18,23 @@ module.exports = {
       next(err)
     }
   },
+
+  /**
+   * Handle route /users/:id GET
+   * Send associated projects for user when query param ?projects present
+   * @param {Object} res 
+   * @param {Object} req
+   * @param {Func} next 
+   * @return {Object} res.json
+   */
+  oneUserGet: async (req, res, next) => {
+    try {
+      const id = req.params.id
+      const projects = req.query.projects
+      const user = await UserService.getOneUser(id, projects ? true : null)
+      return res.status(200).json(user)
+    } catch (err) {
+      next(err)
+    }
+  }
 }
