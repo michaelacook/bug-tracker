@@ -18,7 +18,7 @@ module.exports = {
       }
       const include = []
       if (projects) include.push({ model: Project, required: false })
-      if (role) include.push({ model: Role, required: false })
+      if (role) include.push({ model: Role, required: false, attributes: ["role"] })
       if (include.length) options.include = include
       const users = await User.findAll(options)
       return users
@@ -44,7 +44,7 @@ module.exports = {
       }
       const include = []
       if (projects) include.push({ model: Project, required: false })
-      if (role) include.push({ model: Role, required: false })
+      if (role) include.push({ model: Role, required: false, attributes: ["role"] })
       if (include.length) options.include = include
       const user = await User.findOne(options)
       return user
