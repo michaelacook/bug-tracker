@@ -1,5 +1,6 @@
 const { User, Project, Role } = require("../models/index")
 const { Op } = require("sequelize")
+const bcrypt = require('bcryptjs')
 
 module.exports = {
   /**
@@ -68,6 +69,8 @@ module.exports = {
    */
   addUser: async ({ firstName, lastName, password, email }) => {
     try {
+      const salt = bcrypt.genSaltSync(12)
+      password = bcrypt.hashSync(password, salt)
       await User.sync()
       const user = await User.create({
         firstName,
@@ -94,6 +97,10 @@ module.exports = {
       await User.sync()
       const user = await User.findByPk(id)
       for (let name in payload) {
+        if (name === "password") {
+          const salt = bcrypt.genSaltSync(12)
+          payload[name] = bcrypt.hashSync(password, salt)
+        }
         user[name] = payload[name]
         await user.save()
       }
