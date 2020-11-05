@@ -118,7 +118,7 @@ module.exports = {
     try {
       const id = req.params.id
       await UserService.deleteUser(id)
-      return res.status(204)
+      return res.status(204).end()
     } catch (err) {
       next(err)
     }
