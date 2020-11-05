@@ -91,6 +91,7 @@ module.exports = {
    */
   updateUser: async (id, payload) => {
     try {
+      await User.sync()
       const user = await User.findByPk(id)
       for (let name in payload) {
         user[name] = payload[name]
