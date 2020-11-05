@@ -101,4 +101,32 @@ module.exports = {
       return Promise.reject(err)
     }
   },
+
+  /**
+   * Update user role in the data store
+   * @param {Number} id - user id PK
+   * @param {Number} roleId - new roleId
+   * @return {Boolean} true on success
+   * @return {Promise} reject on fail
+   */
+  updateUserRole: async (id, roleId) => {
+    try {
+      await User.sync()
+      await User.update(
+        {
+          roleId: roleId,
+        },
+        {
+          where: {
+            id: {
+              [Op.eq]: id,
+            },
+          },
+        }
+      )
+      return true
+    } catch (err) {
+      return Promise.reject(err)
+    }
+  },
 }
