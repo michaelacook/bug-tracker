@@ -106,4 +106,21 @@ module.exports = {
       next(err)
     }
   },
+
+  /**
+   * Handle route for /users/:id/delete
+   * @param {Object} res
+   * @param {Object} req
+   * @param {Func} next
+   * @return {Object} res.status
+   */
+  userDeleteDELETE: async (req, res, next) => {
+    try {
+      const id = req.params.id
+      await UserService.deleteUser(id)
+      return res.status(204)
+    } catch (err) {
+      next(err)
+    }
+  },
 }

@@ -136,7 +136,7 @@ module.exports = {
   /**
    * Delete a user in the data store
    * @param {Number} id - userId PK
-   * @return {Boolean} true on success 
+   * @return {Boolean} true on success
    * @return {Promise} reject on fail
    */
   deleteUser: async (id) => {
@@ -145,13 +145,13 @@ module.exports = {
       await User.destroy({
         where: {
           id: {
-            [Op.eq]: id
-          }
-        }
+            [Op.eq]: id,
+          },
+        },
       })
       return true
     } catch (err) {
       return Promise.reject(err)
     }
-  }
+  },
 }
