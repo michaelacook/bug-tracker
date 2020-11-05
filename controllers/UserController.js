@@ -71,4 +71,21 @@ module.exports = {
       next(err)
     }
   },
+
+  /**
+   * Handle route /users/:id/update
+   * @param {Object} res
+   * @param {Object} req
+   * @param {Func} next
+   * @return {Object} res.json
+   */
+  userUpdatePUT: async (req, res, next) => {
+    try {
+      const id = req.params.id
+      await UserService.updateUser(id, req.body)
+      return res.status(200).json(id)
+    } catch (err) {
+      next(err)
+    }
+  }
 }
