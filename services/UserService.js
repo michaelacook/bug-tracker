@@ -112,6 +112,8 @@ module.exports = {
    */
   updateUserRole: async (id, roleId) => {
     try {
+      if (roleId < 2 || roleId > 5)
+        throw new Error("Role id falls outside acceptable range.")
       await User.sync()
       await User.update(
         {
