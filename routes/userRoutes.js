@@ -20,7 +20,7 @@ router.put("/:id/update", (req, res, next) =>
   UserController.userUpdatePUT(req, res, next)
 )
 
-router.put("/:id/role/update/:roleId", (req, res, next) =>
+router.put("/:id/role/update", (req, res, next) =>
   UserController.userUpdateRolePUT(req, res, next)
 )
 

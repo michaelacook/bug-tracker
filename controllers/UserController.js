@@ -90,7 +90,7 @@ module.exports = {
   },
 
   /**
-   * Handle route for /users/:id/role/update/:roleId
+   * Handle route for /users/:id/role/update
    * @param {Object} res
    * @param {Object} req
    * @param {Func} next
@@ -99,7 +99,7 @@ module.exports = {
   userUpdateRolePUT: async (req, res, next) => {
     try {
       const id = req.params.id
-      const roleId = req.params.roleId
+      const roleId = req.body.roleId
       await UserService.updateUserRole(id, roleId)
       return res.status(200).json(id)
     } catch (err) {
