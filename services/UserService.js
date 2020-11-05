@@ -81,4 +81,24 @@ module.exports = {
       return Promise.reject(err)
     }
   },
+
+  /**
+   * Update a user in the data store
+   * @param {Number} id - user id PK
+   * @param {Object} payload - object containing column names and values to be changed
+   * @return {Boolean} true on success
+   * @return {Promise} reject on fail
+   */
+  updateUser: async(id, payload) => {
+    try {
+      const user = await User.findByPk(id)
+      for (let name in payload) {
+        user[name] = payload[name]
+        await user.save()
+      }
+      return true
+    } catch (err) {
+      return Promise.reject(err)
+    }
+  }
 }
