@@ -89,7 +89,7 @@ module.exports = {
    * @return {Boolean} true on success
    * @return {Promise} reject on fail
    */
-  updateUser: async(id, payload) => {
+  updateUser: async (id, payload) => {
     try {
       const user = await User.findByPk(id)
       for (let name in payload) {
@@ -100,5 +100,5 @@ module.exports = {
     } catch (err) {
       return Promise.reject(err)
     }
-  }
+  },
 }
