@@ -16,4 +16,8 @@ router.post("/new", (req, res, next) =>
   UserController.userAddPOST(req, res, next)
 )
 
+router.put("/:id/update", (req, res, next) =>
+  UserController.userUpdatePUT(req, res, next)
+)
+
 module.exports = router
