@@ -24,4 +24,8 @@ router.put("/:id/role/update/:roleId", (req, res, next) =>
   UserController.userUpdateRolePUT(req, res, next)
 )
 
+router.delete("/:id/delete", (req, res, next) => 
+  UserController.userDeleteDELETE(req, res, next)
+)
+
 module.exports = router
