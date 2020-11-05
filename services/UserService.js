@@ -130,4 +130,64 @@ module.exports = {
       return Promise.reject(err)
     }
   },
+
+  /**
+   * Set user role to admin
+   * @param {Number} id - userId PK
+   * @return {Boolean} true on success
+   * @return {Promise} reject on fail
+   */
+  setToAdmin: async (id) => {
+    try {
+      await this.updateUserRole(id, 2)
+      return true
+    } catch (err) {
+      return Promise.reject(err)
+    }
+  },
+
+  /**
+   * Set user role to project manager
+   * @param {Number} id - userId PK
+   * @return {Boolean} true on success
+   * @return {Promise} reject on fail
+   */
+  setToProjectManager: async (id) => {
+    try {
+      await this.updateUserRole(id, 3)
+      return true
+    } catch (err) {
+      return Promise.reject(err)
+    }
+  },
+
+  /**
+   * Set user role to developer
+   * @param {Number} id - userId PK
+   * @return {Boolean} true on success
+   * @return {Promise} reject on fail
+   */
+  setToDeveloper: async (id) => {
+    try {
+      await this.updateUserRole(id, 4)
+      return true
+    } catch (err) {
+      return Promise.reject(err)
+    }
+  },
+
+  /**
+   * Set user role to submitter
+   * @param {Number} id - userId PK
+   * @return {Boolean} true on success
+   * @return {Promise} reject on fail
+   */
+  setToSubmitter: async (id) => {
+    try {
+      await this.updateUserRole(id, 5)
+      return true
+    } catch (err) {
+      return Promise.reject(err)
+    }
+  },
 }
