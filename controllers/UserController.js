@@ -88,4 +88,22 @@ module.exports = {
       next(err)
     }
   },
+
+  /**
+   * Handle route for /users/:id/role/update/:roleId
+   * @param {Object} res
+   * @param {Object} req
+   * @param {Func} next
+   * @return {Object} res.json
+   */
+  userUpdateRolePUT: async (req, res, next) => {
+    try {
+      const id = req.params.id
+      const roleId = req.params.roleId
+      await UserService.updateUserRole(id, roleId)
+      return res.status(200).json(id)
+    } catch (err) {
+      next(err)
+    }
+  },
 }
