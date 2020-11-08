@@ -80,4 +80,14 @@ module.exports = {
       next(err)
     }
   },
+
+  projectDeleteDELETE: async (req, res, next) => {
+    try {
+      const id = req.params.id
+      await ProjectService.deleteProject(id)
+      return res.status(204).end()
+    } catch (err) {
+      next(err)
+    }
+  },
 }
