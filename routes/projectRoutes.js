@@ -8,4 +8,8 @@ router.get("/all", (req, res, next) =>
   ProjectController.allProjectsGET(req, res, next)
 )
 
+router.get("/:id", (req, res, next) =>
+  ProjectController.oneProjectGET(req, res, next)
+)
+
 module.exports = router
