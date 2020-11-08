@@ -1,4 +1,4 @@
-const { Issue, IssueHistory, Project } = require("../models/index")
+const { Issue, IssueHistory, Project, Priority } = require("../models/index")
 
 module.exports = {
   getAllIssues: async (comments = true) => {
@@ -30,6 +30,13 @@ module.exports = {
   },
 
   updateIssue: async (id) => {
+    try {
+    } catch (err) {
+      Promise.reject(err)
+    }
+  },
+
+  updateIssuePriority: async () => {
     try {
     } catch (err) {
       Promise.reject(err)
