@@ -24,6 +24,10 @@ router.put("/:id/update", (req, res, next) =>
   ProjectController.projectUpdatePUT(req, res, next)
 )
 
+router.delete("/:projectId/users/:userId/remove", (req, res, next) =>
+  ProjectController.projectRemoveUserDELETE(req, res, next)
+)
+
 router.delete("/:id/delete", (req, res, next) =>
   ProjectController.projectDeleteDELETE(req, res, next)
 )
