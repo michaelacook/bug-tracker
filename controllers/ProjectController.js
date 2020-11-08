@@ -55,11 +55,11 @@ module.exports = {
       const id = await ProjectService.addProject({
         title,
         description,
-        projectManager
+        projectManager,
       })
       return res.status(201).json(id)
     } catch (err) {
       next(err)
     }
-  }
+  },
 }

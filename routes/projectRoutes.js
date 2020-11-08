@@ -12,4 +12,8 @@ router.get("/:id", (req, res, next) =>
   ProjectController.oneProjectGET(req, res, next)
 )
 
+router.post("/new", (req, res, next) =>
+  ProjectController.projectAddPOST(req, res, next)
+)
+
 module.exports = router
