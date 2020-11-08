@@ -32,4 +32,6 @@ router.delete("/:id/delete", (req, res, next) =>
   ProjectController.projectDeleteDELETE(req, res, next)
 )
 
+// should add routes for /project/:id/issues/all and /project/:id/issues/:issueId
+
 module.exports = router
