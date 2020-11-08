@@ -1,4 +1,4 @@
-const { Project, User, ProjectUser } = require("../models/index")
+const { Project, User, ProjectUser, Role } = require("../models/index")
 const { Op } = require("sequelize")
 
 module.exports = {
@@ -19,6 +19,10 @@ module.exports = {
             required: false,
             attributes: ["id", "firstName", "lastName", "email", "roleId"],
             through: { attributes: [] },
+            include: {
+              model: Role,
+              attributes: ["role"],
+            },
           },
         ]
       const projects = await Project.findAll(options)
@@ -46,6 +50,10 @@ module.exports = {
             required: false,
             attributes: ["id", "firstName", "lastName", "email", "roleId"],
             through: { attributes: [] },
+            include: {
+              model: Role,
+              attributes: ["role"],
+            },
           },
         ]
       const project = await Project.findOne(options)
