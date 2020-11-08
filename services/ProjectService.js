@@ -1,4 +1,4 @@
-const { Project, User } = require("../models/index")
+const { Project, User, ProjectUser } = require("../models/index")
 const { Op } = require("sequelize")
 
 module.exports = {
@@ -115,6 +115,53 @@ module.exports = {
       return true
     } catch (err) {
       return Promise.reject(err)
+    }
+  },
+
+  /**
+   * Add a user to a project through the ProjectUser junction table
+   * @param {Number} userId - user id PK
+   * @param {Number} projectId - project id PK
+   * @return {Boolean} true on success
+   * @return {Promise} reject on fail
+   */
+  addUser: async (userId, projectId) => {
+    try {
+      await ProjectUser.sync()
+      await ProjectUser.create({
+        projectId,
+        userId,
+      })
+      return true
+    } catch (err) {
+      Promise.reject(err)
+    }
+  },
+
+  /**
+   * Remove a user from a project through the ProjectUser junction table 
+   * @param {Number} projectId - project id PK
+   * @return {Boolean} true on success
+   * @return {Promise} reject on fail
+   */
+  removeUser: async (userId, projectId) => {
+    try {
+      await ProjectUser.sync()
+      await ProjectUser.destroy({
+        where: {
+          [Op.and]: {
+            projectId: {
+              [Op.eq]: projectId,
+            },
+            userId: {
+              [Op.eq]: userId,
+            },
+          },
+        },
+      })
+      return true
+    } catch (err) {
+      Promise.reject(err)
     }
   },
 }
