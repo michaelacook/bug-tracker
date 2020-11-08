@@ -17,7 +17,7 @@ module.exports = {
           {
             model: User,
             required: false,
-            attributes: ["id", "firstName", "lastName", "email", "role"],
+            attributes: ["id", "firstName", "lastName", "email", "roleId"],
             through: { attributes: [] },
           },
         ]
@@ -44,7 +44,7 @@ module.exports = {
           {
             model: User,
             required: false,
-            attributes: ["id", "firstName", "lastName", "email", "role"],
+            attributes: ["id", "firstName", "lastName", "email", "roleId"],
             through: { attributes: [] },
           },
         ]
