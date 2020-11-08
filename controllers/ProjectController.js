@@ -81,6 +81,14 @@ module.exports = {
     }
   },
 
+  /**
+   * Handle route for /projects/:id/delete
+   * @param {Object} req - HTTP request object
+   * @param {Object} res - HTTP response object
+   * @param {Function} next - next middleware
+   * @return {Object} res
+   * @return {Function} next
+   */
   projectDeleteDELETE: async (req, res, next) => {
     try {
       const id = req.params.id
