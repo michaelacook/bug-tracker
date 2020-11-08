@@ -40,4 +40,26 @@ module.exports = {
       next(err)
     }
   },
+
+  /**
+   * Handle route for /projects/new
+   * @param {Object} req - HTTP request object
+   * @param {Object} res - HTTP response object
+   * @param {Function} next - next middleware
+   * @return {Object} res
+   * @return {Function} next
+   */
+  projectAddPOST: async (req, res, next) => {
+    try {
+      const { title, description, projectManager } = req.body
+      const id = await ProjectService.addProject({
+        title,
+        description,
+        projectManager
+      })
+      return res.status(201).json(id)
+    } catch (err) {
+      next(err)
+    }
+  }
 }
