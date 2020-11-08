@@ -139,7 +139,7 @@ module.exports = {
   },
 
   /**
-   * Remove a user from a project through the ProjectUser junction table 
+   * Remove a user from a project through the ProjectUser junction table
    * @param {Number} projectId - project id PK
    * @return {Boolean} true on success
    * @return {Promise} reject on fail

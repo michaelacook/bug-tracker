@@ -6,6 +6,7 @@ const path = require("path")
 const cors = require("cors")
 
 const userRoutes = require("./routes/userRoutes")
+const projectRoutes = require("./routes/projectRoutes")
 
 // in production serve create-react-app index.html
 if (process.env.NODE_ENV === "production") {
@@ -24,6 +25,7 @@ app.get("/", (req, res) =>
   res.json({ message: "Welcome to the Bug Tracker API" })
 )
 app.use("/users", userRoutes)
+app.use("/projects", projectRoutes)
 
 // error handler
 app.use((err, req, res, next) => {
