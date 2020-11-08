@@ -18,4 +18,26 @@ module.exports = {
       next(err)
     }
   },
+
+  /**
+   * Handle route for /projects/:id
+   * @param {Object} req - HTTP request object
+   * @param {Object} res - HTTP response object
+   * @param {Function} next - next middleware
+   * @return {Object} res
+   * @return {Function} next
+   */
+  oneProjectGET: async (req, res, next) => {
+    try {
+      const id = req.params.id
+      const users = req.query.users
+      const project = await ProjectService.getOneProject(
+        id,
+        users ? true : null
+      )
+      return res.status(200).json(project)
+    } catch (err) {
+      next(err)
+    }
+  },
 }
