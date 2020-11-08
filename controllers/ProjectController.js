@@ -73,7 +73,8 @@ module.exports = {
    */
   projectAddUserPOST: async (req, res, next) => {
     try {
-      const { userId, projectId } = req.body
+      const userId = req.body.userId
+      const projectId = req.params.id
       await ProjectService.addUser(userId, projectId)
       return res.status(201).json(projectId)
     } catch (err) {
