@@ -64,6 +64,24 @@ module.exports = {
   },
 
   /**
+   * Handle route for /projects/:id/users/add
+   * @param {Object} req - HTTP request object
+   * @param {Object} res - HTTP response object
+   * @param {Function} next - next middleware
+   * @return {Object} res
+   * @return {Function} next
+   */
+  projectAddUserPOST: async (req, res, next) => {
+    try {
+      const { userId, projectId } = req.body
+      await ProjectService.addUser(userId, projectId)
+      return res.status(201).json(projectId)
+    } catch (err) {
+      next(err)
+    }
+  },
+
+  /**
    * Handle route for /projects/:id/update
    * @param {Object} req - HTTP request object
    * @param {Object} res - HTTP response object
