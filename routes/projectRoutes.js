@@ -16,7 +16,7 @@ router.post("/new", (req, res, next) =>
   ProjectController.projectAddPOST(req, res, next)
 )
 
-router.post("/:id/users/add", (req, res, next) => 
+router.post("/:id/users/add", (req, res, next) =>
   ProjectController.projectAddUserPOST(req, res, next)
 )
 

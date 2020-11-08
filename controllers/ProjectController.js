@@ -100,6 +100,24 @@ module.exports = {
   },
 
   /**
+   * Handle route for /projects/:id/users/remove
+   * @param {Object} req - HTTP request object
+   * @param {Object} res - HTTP response object
+   * @param {Function} next - next middleware
+   * @return {Object} res
+   * @return {Function} next
+   */
+  projectRemoveUserDELETE: async (req, res, next) => {
+    try {
+      const { userId, projectId } = req.body
+      await ProjectService.removeUser(userId, projectId)
+      return res.status(204).end()
+    } catch (err) {
+      next(err)
+    }
+  },
+
+  /**
    * Handle route for /projects/:id/delete
    * @param {Object} req - HTTP request object
    * @param {Object} res - HTTP response object
