@@ -62,4 +62,22 @@ module.exports = {
       next(err)
     }
   },
+
+  /**
+   * Handle route for /projects/:id/update
+   * @param {Object} req - HTTP request object
+   * @param {Object} res - HTTP response object
+   * @param {Function} next - next middleware
+   * @return {Object} res
+   * @return {Function} next
+   */
+  projectUpdatePUT: async (req, res, next) => {
+    try {
+      const id = req.params.id
+      await ProjectService.updateProject(id, req.body)
+      return res.status(200).json(id)
+    } catch (err) {
+      next(err)
+    }
+  },
 }
