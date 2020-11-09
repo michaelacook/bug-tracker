@@ -16,8 +16,8 @@ module.exports = (sequelize, DataTypes) => {
   }
   Issue.init(
     {
-      priorityId: DataTypes.NUMBER,
-      projectId: DataTypes.NUMBER,
+      priorityId: DataTypes.INTEGER,
+      projectId: DataTypes.INTEGER,
       title: DataTypes.STRING,
       description: DataTypes.STRING,
     },
