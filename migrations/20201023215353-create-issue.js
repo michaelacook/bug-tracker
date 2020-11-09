@@ -11,6 +11,9 @@ module.exports = {
       priorityId: {
         type: Sequelize.NUMBER,
       },
+      projectId: {
+        type: Sequelize.NUMBER,
+      },
       title: {
         type: Sequelize.STRING,
       },
