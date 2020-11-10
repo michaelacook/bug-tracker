@@ -1,30 +1,37 @@
-const { Project, User, ProjectUser, Role } = require("../models/index")
+const { Project, User, ProjectUser, Role, Issue } = require("../models/index")
 const { Op } = require("sequelize")
 
 module.exports = {
   /**
    * Get all projects
    * @param {Boolean} users - false by default, true if project users should be included
+   * @param {Boolean} issues - true by default, include all issues belonging to a project
    * @return {Object} projects on success
    * @return {Promise} reject on fail
    */
-  getAllProjects: async (users = false) => {
+  getAllProjects: async (users = false, issues = true) => {
     try {
       await Project.sync()
       const options = {}
+      const include = []
       if (users)
-        options.include = [
-          {
-            model: User,
-            required: false,
-            attributes: ["id", "firstName", "lastName", "email", "roleId"],
-            through: { attributes: [] },
-            include: {
-              model: Role,
-              attributes: ["role"],
-            },
+        include.push({
+          model: User,
+          required: false,
+          attributes: ["id", "firstName", "lastName", "email", "roleId"],
+          through: { attributes: [] },
+          include: {
+            model: Role,
+            attributes: ["role"],
           },
-        ]
+        })
+      if (issues)
+        include.push({
+          model: Issue,
+          required: false,
+          attributes: ["id", "priorityId", "title", "description"],
+        })
+      options.include = include
       const projects = await Project.findAll(options)
       return projects
     } catch (err) {
@@ -39,23 +46,29 @@ module.exports = {
    * @return {Object} project on success
    * @return {Promise} reject on fail
    */
-  getOneProject: async (id, users = false) => {
+  getOneProject: async (id, users = false, issues = true) => {
     try {
       await Project.sync()
       const options = { where: { id: { [Op.eq]: id } } }
+      const include = []
       if (users)
-        options.include = [
-          {
-            model: User,
-            required: false,
-            attributes: ["id", "firstName", "lastName", "email", "roleId"],
-            through: { attributes: [] },
-            include: {
-              model: Role,
-              attributes: ["role"],
-            },
+        include.push({
+          model: User,
+          required: false,
+          attributes: ["id", "firstName", "lastName", "email", "roleId"],
+          through: { attributes: [] },
+          include: {
+            model: Role,
+            attributes: ["role"],
           },
-        ]
+        })
+      if (issues)
+        include.push({
+          model: Issue,
+          required: false,
+          attributes: ["id", "priorityId", "title", "description"],
+        })
+      options.include = include
       const project = await Project.findOne(options)
       return project
     } catch (err) {
