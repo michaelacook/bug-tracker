@@ -78,6 +78,7 @@ module.exports = {
    * Add a new issue
    * @param {Object} destructured
    * @return {Number} newly created issue id
+   * @return {Number} issue id
    * @return {Promise} reject on fail
    */
   addIssue: async ({ priorityId, projectId, title, description }) => {
