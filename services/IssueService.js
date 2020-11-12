@@ -44,7 +44,7 @@ module.exports = {
       if (comments) include.push({ model: Comment, required: false })
       if (history) include.push({ model: IssueHistory, required: false })
       if (include.length) options.include = include
-      const issue = await Issue.findOne(id)
+      const issue = await Issue.findOne(options)
       return issue
     } catch (err) {
       Promise.reject(err)
