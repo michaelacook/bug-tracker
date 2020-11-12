@@ -11,15 +11,17 @@ module.exports = {
   /**
    * Get all issues regardless of project
    * @param {Boolean} comments default true, used to determine if comments should be included
+   * @param {Boolean} history defaults false, used to determine if issue history should be included
    * @return {Object} issues
    * @return {Promise} reject on fail
    */
-  getAllIssues: async (comments = true) => {
+  getAllIssues: async (comments = true, history = false) => {
     try {
       await Issue.sync()
       const options = {}
       const include = []
       if (comments) include.push({ model: Comment, required: false })
+      if (history) include.push({ model: IssueHistory, required: false })
       if (include.length) options.include = include
       const issues = await Issue.findAll(options)
       return issues
@@ -32,13 +34,15 @@ module.exports = {
    * Get a single issue by id PK
    * @param {Number} id - issue PK
    * @param {Boolean} comments true by default, used to determine if comments should be included
+   * @param {Boolean} history defaults false, used to determine if issue history should be included
    */
-  getOneIssue: async (id, comments = true) => {
+  getOneIssue: async (id, comments = true, history = false) => {
     try {
       await Issue.sync()
       const options = { where: { id: { [Op.eq]: id } } }
       const include = []
       if (comments) include.push({ model: Comment, required: false })
+      if (history) include.push({ model: IssueHistory, required: false })
       if (include.length) options.include = include
       const issue = await Issue.findOne(id)
       return issue
@@ -51,15 +55,17 @@ module.exports = {
    * Get all the issues for a project
    * @param {Number} projectId - project FK on the Issue table
    * @param {Boolean} comments true by default, used to determine if comments should be included
+   * @param {Boolean} history defaults false, used to determine if issue history should be included
    * @return {Object} issues
    * @return {Promise} reject on fail
    */
-  getIssuesByProject: async (projectId, comments = true) => {
+  getIssuesByProject: async (projectId, comments = true, history = false) => {
     try {
       await Issue.sync()
       const options = { where: { projectId: { [Op.eq]: projectId } } }
       const include = []
       if (comments) include.push({ model: Comment, required: false })
+      if (history) include.push({ model: IssueHistory, required: false })
       if (include.length) options.include = include
       const issues = await Issue.findAll(options)
       return issues
