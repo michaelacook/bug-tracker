@@ -19,7 +19,9 @@ module.exports = {
     try {
       await Issue.sync()
       const options = {}
-      const include = []
+      const include = [
+        { model: Priority, required: false, attributes: ["level"] },
+      ]
       if (comments) include.push({ model: Comment, required: false })
       if (history) include.push({ model: IssueHistory, required: false })
       if (include.length) options.include = include
@@ -40,7 +42,9 @@ module.exports = {
     try {
       await Issue.sync()
       const options = { where: { id: { [Op.eq]: id } } }
-      const include = []
+      const include = [
+        { model: Priority, required: false, attributes: ["level"] },
+      ]
       if (comments) include.push({ model: Comment, required: false })
       if (history) include.push({ model: IssueHistory, required: false })
       if (include.length) options.include = include
@@ -63,7 +67,9 @@ module.exports = {
     try {
       await Issue.sync()
       const options = { where: { projectId: { [Op.eq]: projectId } } }
-      const include = []
+      const include = [
+        { model: Priority, required: false, attributes: ["level"] },
+      ]
       if (comments) include.push({ model: Comment, required: false })
       if (history) include.push({ model: IssueHistory, required: false })
       if (include.length) options.include = include
