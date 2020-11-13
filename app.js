@@ -7,6 +7,7 @@ const cors = require("cors")
 
 const userRoutes = require("./routes/userRoutes")
 const projectRoutes = require("./routes/projectRoutes")
+const issueRoutes = require("./routes/issueRoutes")
 
 // in production serve create-react-app index.html
 if (process.env.NODE_ENV === "production") {
@@ -26,6 +27,7 @@ app.get("/", (req, res) =>
 )
 app.use("/users", userRoutes)
 app.use("/projects", projectRoutes)
+app.use("/issues", issueRoutes)
 
 // error handler
 app.use((err, req, res, next) => {

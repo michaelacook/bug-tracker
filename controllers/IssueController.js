@@ -39,7 +39,7 @@ module.exports = {
         !comments ? null : false,
         history ? true : null
       )
-      return res.status(200).json(issues)
+      return res.status(200).json(issue)
     } catch (err) {
       next(err)
     }
