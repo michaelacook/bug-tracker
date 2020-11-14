@@ -13,7 +13,7 @@ module.exports = {
       const comments = req.query.comments
       const history = req.query.history
       const issues = await IssueService.getAllIssues(
-        !comments ? null : false,
+        !comments ? undefined : false,
         history ? true : null
       )
       return res.status(200).json(issues)
