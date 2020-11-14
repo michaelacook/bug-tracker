@@ -2,7 +2,7 @@
 This project is an attempt to build a minimalistic but fully functional issue tracking application for use in design, software and production development and related teams.
 
 ## Running Locally 
-Clone the project and run `npm run dev` to start Express and the React app. The React app uses a proxy to run on port 5000.
+Clone the project and run `npm run dev` to start Express and the React app. The React app uses a proxy to run on port 5000. To run the API only, run `$ npm run server`.
 
 ## Technology
 * PostgreSQL
@@ -10,7 +10,7 @@ Clone the project and run `npm run dev` to start Express and the React app. The 
 * Sequelize.js
 * Express.js
 * React.js
-* Bootstrap
+* Semantic UI React
 
 ## License 
 - MIT
