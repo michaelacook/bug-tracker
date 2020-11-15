@@ -1,4 +1,5 @@
 const UserService = require("../services/UserService")
+const { validationResult } = require("express-validator")
 
 module.exports = {
   /**
@@ -59,6 +60,10 @@ module.exports = {
    */
   userAddPOST: async (req, res, next) => {
     try {
+      const errors = validationResult(req)
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() })
+      }
       const { firstName, lastName, password, email } = req.body
       const id = await UserService.addUser({
         firstName,
@@ -81,6 +86,10 @@ module.exports = {
    */
   userUpdatePUT: async (req, res, next) => {
     try {
+      const errors = validationResult(req)
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() })
+      }
       const id = req.params.id
       await UserService.updateUser(id, req.body)
       return res.status(200).json(id)
