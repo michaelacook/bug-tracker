@@ -3,6 +3,7 @@
 const express = require("express")
 const router = express.Router()
 const ProjectController = require("../controllers/ProjectController")
+const newProjectValidator = require("../validation/new-project-validator")
 
 router.get("/all", (req, res, next) =>
   ProjectController.allProjectsGET(req, res, next)
@@ -12,7 +13,7 @@ router.get("/:id", (req, res, next) =>
   ProjectController.oneProjectGET(req, res, next)
 )
 
-router.post("/new", (req, res, next) =>
+router.post("/new", newProjectValidator, (req, res, next) =>
   ProjectController.projectAddPOST(req, res, next)
 )
 

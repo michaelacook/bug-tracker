@@ -1,4 +1,5 @@
 const ProjectService = require("../services/ProjectService")
+const { validationResult } = require("express-validator")
 
 module.exports = {
   /**
@@ -51,6 +52,10 @@ module.exports = {
    */
   projectAddPOST: async (req, res, next) => {
     try {
+      const errors = validationResult(req)
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() })
+      }
       const { title, description, projectManager } = req.body
       const id = await ProjectService.addProject({
         title,
