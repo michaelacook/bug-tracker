@@ -9,7 +9,10 @@ module.exports = [
     .optional()
     .isAlpha()
     .withMessage("Last name should contain only alphabetical characters."),
-  body("email").optional().isEmail().withMessage("Please provide an email address."),
+  body("email")
+    .optional()
+    .isEmail()
+    .withMessage("Please provide an email address."),
   body("password")
     .optional()
     .isAlphanumeric()
