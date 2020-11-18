@@ -4,6 +4,7 @@ const express = require("express")
 const router = express.Router()
 const ProjectController = require("../controllers/ProjectController")
 const newProjectValidator = require("../validation/new-project-validator")
+const updateProjectValidator = require("../validation/update-project-validator")
 const addProjectUserValidator = require("../validation/project-add-user-validator")
 
 router.get("/all", (req, res, next) =>
@@ -22,7 +23,7 @@ router.post("/:id/users/add", addProjectUserValidator, (req, res, next) =>
   ProjectController.projectAddUserPOST(req, res, next)
 )
 
-router.put("/:id/update", (req, res, next) =>
+router.put("/:id/update", updateProjectValidator, (req, res, next) =>
   ProjectController.projectUpdatePUT(req, res, next)
 )
 
