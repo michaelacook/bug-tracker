@@ -5,6 +5,7 @@ const router = express.Router()
 const IssueController = require("../controllers/IssueController")
 const newIssueValidator = require("../validation/new-issue-validator")
 const updateIssueValidator = require("../validation/update-issue-validator")
+const updateIssuePriorityValidator = require("../validation/update-issue-priority-validator")
 
 router.get("/all", (req, res, next) =>
   IssueController.allIssuesGET(req, res, next)
@@ -26,8 +27,10 @@ router.put("/:id/update", updateIssueValidator, (req, res, next) =>
   IssueController.issueUpdatePUT(req, res, next)
 )
 
-router.put("/:id/priority/update", (req, res, next) =>
-  IssueController.issueUpdatePriorityPUT(req, res, next)
+router.put(
+  "/:id/priority/update",
+  updateIssuePriorityValidator,
+  (req, res, next) => IssueController.issueUpdatePriorityPUT(req, res, next)
 )
 
 router.delete("/:id/delete", (req, res, next) =>

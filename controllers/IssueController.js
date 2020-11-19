@@ -119,6 +119,10 @@ module.exports = {
    */
   issueUpdatePriorityPUT: async (req, res, next) => {
     try {
+      const errors = validationResult(req)
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() })
+      }
       const id = req.params.id
       const newPriorityId = req.body.newPriorityId
       await IssueService.updateIssuePriority(id, newPriorityId)
