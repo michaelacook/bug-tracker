@@ -3,6 +3,7 @@
 const express = require("express")
 const router = express.Router()
 const IssueController = require("../controllers/IssueController")
+const newIssueValidator = require("../validation/new-issue-validator")
 
 router.get("/all", (req, res, next) =>
   IssueController.allIssuesGET(req, res, next)
@@ -16,7 +17,7 @@ router.get("/project/:id", (req, res, next) =>
   IssueController.issueByProjectGET(req, res, next)
 )
 
-router.post("/new", (req, res, next) =>
+router.post("/new", newIssueValidator, (req, res, next) =>
   IssueController.issueAddPOST(req, res, next)
 )
 
