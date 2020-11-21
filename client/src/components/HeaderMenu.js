@@ -5,8 +5,8 @@ import { Input, Menu } from "semantic-ui-react"
 export default function () {
   return (
     <div>
-      <Menu inverted>
-        <Menu.Item as={NavLink} exact to="/home" name="home" />
+      <Menu inverted color="black">
+        <Menu.Item as={NavLink} exact to="/dashboard" name="dashboard" />
         <Menu.Item as={NavLink} exact to="/projects" name="my projects" />
         <Menu.Menu position="right">
           <Menu.Item>
